@@ -17,7 +17,7 @@ public class ZM_UporabnikOgledTekme extends Application {
 
    @Override
    public void start(Stage stage) throws IOException {
-      FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("seznam_tekem.fxml"));
+      FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ZM_UporabnikOgledTekme.fxml"));
       Scene scene = new Scene(fxmlLoader.load(), 600, 400);
       stage.setTitle("HoopStat");
       stage.setScene(scene);
