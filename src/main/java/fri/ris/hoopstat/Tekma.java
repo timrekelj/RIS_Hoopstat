@@ -1,4 +1,4 @@
-package fri.ris.hoopstat.models;
+package fri.ris.hoopstat;
 /***********************************************************************
  * Module:  Tekma.java
  * Author:  aa8934
@@ -14,16 +14,22 @@ public class Tekma {
    /** @pdOid 00de4af1-e4cc-4502-9d23-97a09f550563 */
    private Ekipa gostujoca_ekipa;
    /** @pdOid d2c5b3fa-bd4c-42d6-aa3a-2c551ebc4401 */
-   private java.util.Date datum;
+   private java.util.Date datum_ura;
    /** @pdOid dd51945d-e851-4220-bee5-6a7860ba2640 */
-   private java.util.Date ura;
-   /** @pdOid 43647587-46f8-4e57-adb6-ea1d96033ed7 */
    private int tocke_gostujoca;
    /** @pdOid 21019559-b7aa-4c98-b12a-97ec2d7495ca */
    private int tocke_domaca;
    
    /** @pdRoleInfo migr=no name=igralec_tekma assc=Association_8 coll=java.util.Collection impl=java.util.HashSet mult=0..1 type=Composition */
    public igralec_tekma igralec_tekma;
+
+   public Tekma(Ekipa domaca_ekipa, Ekipa gostujoca_ekipa, Date datum_ura, int tocke_gostujoca, int tocke_domaca) {
+        this.domaca_ekipa = domaca_ekipa;
+        this.gostujoca_ekipa = gostujoca_ekipa;
+        this.datum_ura = datum_ura;
+        this.tocke_gostujoca = tocke_gostujoca;
+        this.tocke_domaca = tocke_domaca;
+   }
    
    /** @pdOid a64051e2-286a-4a35-a4fe-bff6b8c776bf */
    public Tekma vrni_tekmo() {
@@ -35,7 +41,7 @@ public class Tekma {
       // TODO: implement
       return null;
    }
-   
+
    /** @pdOid 16e5529d-38c3-4891-8ec6-1704ad3ce7aa */
    public Igralec vrni_igralca() {
       // TODO: implement

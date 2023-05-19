@@ -1,14 +1,31 @@
-package fri.ris.hoopstat.models;
+package fri.ris.hoopstat;
 /***********************************************************************
  * Module:  ZM_UporabnikOgledTekme.java
  * Author:  aa8934
  * Purpose: Defines the Class ZM_UporabnikOgledTekme
  ***********************************************************************/
 
-import java.util.*;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /** @pdOid c8f67d71-1876-4dbe-a074-dde33a29d912 */
-public class ZM_UporabnikOgledTekme {
+public class ZM_UporabnikOgledTekme extends Application {
+
+   @Override
+   public void start(Stage stage) throws IOException {
+      FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("seznam_tekem.fxml"));
+      Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+      stage.setTitle("HoopStat");
+      stage.setScene(scene);
+      stage.setMinHeight(400);
+      stage.setMinWidth(600);
+      stage.show();
+   }
+
    /** @pdRoleInfo migr=no name=K_OgledTekme assc=Association_7 coll=java.util.Collection impl=java.util.HashSet mult=1..1 */
    public K_OgledTekme k_OgledTekme;
    
@@ -47,5 +64,4 @@ public class ZM_UporabnikOgledTekme {
       // TODO: implement
       return null;
    }
-
 }

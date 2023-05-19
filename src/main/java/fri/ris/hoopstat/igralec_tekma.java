@@ -1,11 +1,9 @@
-package fri.ris.hoopstat.models;
+package fri.ris.hoopstat;
 /***********************************************************************
  * Module:  igralec_tekma.java
  * Author:  aa8934
  * Purpose: Defines the Class igralec_tekma
  ***********************************************************************/
-
-import java.util.*;
 
 /** @pdOid 61dc6001-9504-4ee9-a163-fdb71f30351c */
 public class igralec_tekma {
