@@ -29,7 +29,11 @@ public class ZM_UporabnikOgledTekme extends Application {
       stage.setMinWidth(600);
       stage.show();
 
+      // tole je potrebno, da lahko dostopamo do kontrollerja
+      // use kar rabmo iz controllerja, klicemo prek tega
       k_OgledTekme = fxmlLoader.getController();
+
+      // tukej klicemo metode iz tega classa da se izvedejo use casi
       Prikazi_seznam_tekem();
    }
 
