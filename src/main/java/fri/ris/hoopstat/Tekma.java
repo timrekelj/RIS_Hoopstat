@@ -10,9 +10,9 @@ import java.util.*;
 /** @pdOid dc628a9e-a9e1-4a27-b2fd-d6ccbde9eec8 */
 public class Tekma {
    /** @pdOid a69fca72-cc11-4bc1-a701-907794fb18b9 */
-   private Ekipa domaca_ekipa;
+   public Ekipa domaca_ekipa;
    /** @pdOid 00de4af1-e4cc-4502-9d23-97a09f550563 */
-   private Ekipa gostujoca_ekipa;
+   public Ekipa gostujoca_ekipa;
    /** @pdOid d2c5b3fa-bd4c-42d6-aa3a-2c551ebc4401 */
    private java.util.Date datum_ura;
    /** @pdOid dd51945d-e851-4220-bee5-6a7860ba2640 */

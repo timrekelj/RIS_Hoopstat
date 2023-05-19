@@ -10,7 +10,7 @@ import java.util.*;
 /** @pdOid c2cdc733-e668-4db3-b29a-36486a994b42 */
 public class Ekipa {
    /** @pdOid 4b359e05-c17d-4ffb-9a82-7fb18694cf5b */
-   private String ime;
+   public String ime;
    private List<Igralec> igralci;
 
    public Ekipa(String ime, List<Igralec> igralci) {

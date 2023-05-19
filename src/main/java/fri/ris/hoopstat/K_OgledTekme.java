@@ -5,15 +5,41 @@ package fri.ris.hoopstat;
  * Purpose: Defines the Class K_OgledTekme
  ***********************************************************************/
 
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+
+import java.net.URL;
 import java.time.Instant;
 import java.util.*;
 
 /** @pdOid a92dd081-e135-4e64-b5ed-06dd201d951c */
-public class K_OgledTekme {
-   /** @pdRoleInfo migr=no name=Tekma assc=Association_9 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
-   public List<Tekma> tekme;
+public class K_OgledTekme implements Initializable {
 
-   public void init_hoopstat() {
+   public RadioButton tekma00;
+   public RadioButton tekma01;
+   public RadioButton tekma02;
+   public Label ekipa_home;
+   public Label ekipa_away;
+   public Label rezultat_home;
+   public Label rezultat_away;
+   public ChoiceBox izbira_igralca;
+   public Button spremljaj;
+   public Label igralec;
+   public Label tocke;
+   public Label asistence;
+   public Label skoki;
+   public Label bloki;
+   public Label ukradene_zoge;
+   public Label izgubljene_zoge;
+
+
+   /** @pdRoleInfo migr=no name=Tekma assc=Association_9 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
+   public static List<Tekma> tekme;
+   public Tekma izbrana_tekma;
+   public Igralec izbrani_igralec;
+
+   @Override
+   public void initialize(URL url, ResourceBundle resourceBundle) {
       tekme = new ArrayList<Tekma>();
 
       List<Igralec> igralci_lakers = new ArrayList<Igralec>();
@@ -48,9 +74,8 @@ public class K_OgledTekme {
    }
    
    /** @pdOid 31538e12-8394-4237-9bcd-3c0c31434101 */
-   public Tekma Vrni_seznam_tekem() {
-      // TODO: implement
-      return null;
+   public List<Tekma> Vrni_seznam_tekem() {
+      return tekme;
    }
    
    /** @pdOid e41c5dc0-181f-4914-8340-a80f74943c07 */
@@ -120,11 +145,10 @@ public class K_OgledTekme {
          if (this.tekme.contains(oldTekma))
             this.tekme.remove(oldTekma);
    }
-   
+
    /** @pdGenerated default removeAll */
    public void removeAllTekma() {
       if (tekme != null)
          tekme.clear();
    }
-
 }
