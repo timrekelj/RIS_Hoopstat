@@ -16,12 +16,12 @@ public class Tekma {
    /** @pdOid d2c5b3fa-bd4c-42d6-aa3a-2c551ebc4401 */
    private java.util.Date datum_ura;
    /** @pdOid dd51945d-e851-4220-bee5-6a7860ba2640 */
-   private int tocke_gostujoca;
+   public int tocke_gostujoca;
    /** @pdOid 21019559-b7aa-4c98-b12a-97ec2d7495ca */
-   private int tocke_domaca;
+   public int tocke_domaca;
    
    /** @pdRoleInfo migr=no name=igralec_tekma assc=Association_8 coll=java.util.Collection impl=java.util.HashSet mult=0..1 type=Composition */
-   public igralec_tekma igralec_tekma;
+   public List<igralec_tekma> igralec_tekma;
 
    public Tekma(Ekipa domaca_ekipa, Ekipa gostujoca_ekipa, Date datum_ura, int tocke_gostujoca, int tocke_domaca) {
         this.domaca_ekipa = domaca_ekipa;
@@ -29,6 +29,7 @@ public class Tekma {
         this.datum_ura = datum_ura;
         this.tocke_gostujoca = tocke_gostujoca;
         this.tocke_domaca = tocke_domaca;
+        igralec_tekma = new ArrayList<>();
    }
    
    /** @pdOid a64051e2-286a-4a35-a4fe-bff6b8c776bf */
@@ -49,9 +50,12 @@ public class Tekma {
    }
    
    /** @pdOid 81952ea3-fc18-4793-9d52-037d55ce42fd */
-   public Collection<Igralec> vrni_seznam_igralcev() {
-      // TODO: implement
-      return null;
+   public List<Igralec> vrni_seznam_igralcev() {
+      List<Igralec> igralci = new ArrayList<>();
+      for (fri.ris.hoopstat.igralec_tekma it: igralec_tekma) {
+         igralci.add(it.igralec);
+      }
+      return igralci;
    }
 
 }

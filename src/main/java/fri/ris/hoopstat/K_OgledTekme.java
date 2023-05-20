@@ -5,6 +5,9 @@ package fri.ris.hoopstat;
  * Purpose: Defines the Class K_OgledTekme
  ***********************************************************************/
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
@@ -15,6 +18,7 @@ import java.util.*;
 /** @pdOid a92dd081-e135-4e64-b5ed-06dd201d951c */
 public class K_OgledTekme implements Initializable {
 
+   public ToggleGroup izbranaTekmaGroup;
    public RadioButton tekma00;
    public RadioButton tekma01;
    public RadioButton tekma02;
@@ -29,8 +33,8 @@ public class K_OgledTekme implements Initializable {
    public Label asistence;
    public Label skoki;
    public Label bloki;
-   public Label ukradene_zoge;
-   public Label izgubljene_zoge;
+   public Label ukradene;
+   public Label izgubljene;
 
 
    /** @pdRoleInfo migr=no name=Tekma assc=Association_9 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
@@ -69,8 +73,45 @@ public class K_OgledTekme implements Initializable {
       Ekipa olimpija = new Ekipa("Olimpija", igralci_olimpija);
 
       tekme.add(new Tekma(lakers, heat, Date.from(Instant.now()), 99, 91));
+      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(0), tekme.get(0), 25, 8, 6, 1, 1, 4));
+      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(1), tekme.get(0), 30, 3, 12, 3, 0, 0));
+      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(2), tekme.get(0), 14, 12, 3, 0, 1, 3));
+      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(3), tekme.get(0), 22, 2, 4, 1, 1, 1));
+      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(4), tekme.get(0), 8, 4, 9, 2, 0, 1));
+
+      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(0), tekme.get(0), 29, 8, 6, 1, 1, 4));
+      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(1), tekme.get(0), 24, 3, 12, 3, 0, 0));
+      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(2), tekme.get(0), 11, 12, 3, 0, 1, 3));
+      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(3), tekme.get(0), 15, 2, 4, 1, 1, 1));
+      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(4), tekme.get(0), 12, 4, 9, 2, 0, 1));
+
+
       tekme.add(new Tekma(lakers, olimpija, Date.from(Instant.parse("2023-04-04T20:30:00Z")), 112, 123));
+      tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(0), tekme.get(1), 15, 10, 9, 0, 2, 6));
+      tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(1), tekme.get(1), 30, 5, 17, 5, 0, 1));
+      tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(2), tekme.get(1), 24, 9, 1, 0, 4, 2));
+      tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(3), tekme.get(1), 26, 1, 2, 0, 0, 2));
+      tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(4), tekme.get(1), 17, 2, 7, 1, 0, 0));
+
+      tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(0), tekme.get(1), 36, 13, 6, 0, 3, 3));
+      tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(1), tekme.get(1), 34, 5, 12, 3, 0, 3));
+      tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(2), tekme.get(1), 18, 4, 3, 0, 1, 2));
+      tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(3), tekme.get(1), 22, 2, 4, 1, 1, 1));
+      tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(4), tekme.get(1), 13, 1, 2, 2, 0, 1));
+
+
       tekme.add(new Tekma(olimpija, heat, Date.from(Instant.parse("2023-03-05T22:00:00Z")), 96, 95));
+      tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(0), tekme.get(2), 29, 11, 3, 0, 2, 4));
+      tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(1), tekme.get(2), 26, 5, 9, 3, 0, 1));
+      tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(2), tekme.get(2), 13, 2, 1, 0, 0, 2));
+      tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(3), tekme.get(2), 16, 1, 2, 0, 1, 2));
+      tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(4), tekme.get(2), 12, 2, 3, 1, 1, 0));
+
+      tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_heat.get(0), tekme.get(2), 33, 6, 6, 2, 1, 4));
+      tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_heat.get(1), tekme.get(2), 19, 3, 12, 3, 0, 2));
+      tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_heat.get(2), tekme.get(2), 12, 9, 5, 0, 1, 3));
+      tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_heat.get(3), tekme.get(2), 18, 5, 4, 0, 1, 1));
+      tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_heat.get(4), tekme.get(2), 13, 1, 2, 0, 0, 1));
    }
    
    /** @pdOid 31538e12-8394-4237-9bcd-3c0c31434101 */
