@@ -19,16 +19,20 @@ public class Tekma {
    public int tocke_gostujoca;
    /** @pdOid 21019559-b7aa-4c98-b12a-97ec2d7495ca */
    public int tocke_domaca;
-   
+
+   /** @pdOid 00de4af1-b7aa-4220-b12a-6a7860ba2640 */
+   public boolean koncana;
+
    /** @pdRoleInfo migr=no name=igralec_tekma assc=Association_8 coll=java.util.Collection impl=java.util.HashSet mult=0..1 type=Composition */
    public List<igralec_tekma> igralec_tekma;
 
-   public Tekma(Ekipa domaca_ekipa, Ekipa gostujoca_ekipa, Date datum_ura, int tocke_gostujoca, int tocke_domaca) {
+   public Tekma(Ekipa domaca_ekipa, Ekipa gostujoca_ekipa, Date datum_ura, int tocke_gostujoca, int tocke_domaca, boolean koncana) {
         this.domaca_ekipa = domaca_ekipa;
         this.gostujoca_ekipa = gostujoca_ekipa;
         this.datum_ura = datum_ura;
         this.tocke_gostujoca = tocke_gostujoca;
         this.tocke_domaca = tocke_domaca;
+        this.koncana = koncana;
         igralec_tekma = new ArrayList<>();
    }
    

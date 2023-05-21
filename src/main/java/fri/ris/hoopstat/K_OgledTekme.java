@@ -74,21 +74,21 @@ public class K_OgledTekme implements Initializable {
       Ekipa heat = new Ekipa("Heat", igralci_heat);
       Ekipa olimpija = new Ekipa("Olimpija", igralci_olimpija);
 
-      tekme.add(new Tekma(lakers, heat, Date.from(Instant.now()), 91, 99));
+      tekme.add(new Tekma(lakers, heat, Date.from(Instant.now()), 104, 99, false));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(0), tekme.get(0), 25, 8, 6, 1, 1, 4));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(1), tekme.get(0), 30, 3, 12, 3, 0, 0));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(2), tekme.get(0), 14, 12, 3, 0, 1, 3));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(3), tekme.get(0), 22, 2, 4, 1, 1, 1));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(4), tekme.get(0), 8, 4, 9, 2, 0, 1));
 
-      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(0), tekme.get(0), 29, 8, 6, 1, 1, 4));
+      tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(0), tekme.get(0), 42, 8, 6, 1, 1, 4));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(1), tekme.get(0), 24, 3, 12, 3, 0, 0));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(2), tekme.get(0), 11, 12, 3, 0, 1, 3));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(3), tekme.get(0), 15, 2, 4, 1, 1, 1));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(4), tekme.get(0), 12, 4, 9, 2, 0, 1));
 
 
-      tekme.add(new Tekma(lakers, olimpija, Date.from(Instant.parse("2023-04-04T20:30:00Z")), 123, 112));
+      tekme.add(new Tekma(lakers, olimpija, Date.from(Instant.parse("2023-04-04T20:30:00Z")), 123, 112, true));
       tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(0), tekme.get(1), 15, 10, 9, 0, 2, 6));
       tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(1), tekme.get(1), 30, 5, 17, 5, 0, 1));
       tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(2), tekme.get(1), 24, 9, 1, 0, 4, 2));
@@ -102,7 +102,7 @@ public class K_OgledTekme implements Initializable {
       tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(4), tekme.get(1), 13, 1, 2, 2, 0, 1));
 
 
-      tekme.add(new Tekma(olimpija, heat, Date.from(Instant.parse("2023-03-05T22:00:00Z")), 95, 96));
+      tekme.add(new Tekma(olimpija, heat, Date.from(Instant.parse("2023-03-05T22:00:00Z")), 95, 96, true));
       tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(0), tekme.get(2), 29, 11, 3, 0, 2, 4));
       tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(1), tekme.get(2), 26, 5, 9, 3, 0, 1));
       tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(2), tekme.get(2), 13, 2, 1, 0, 0, 2));

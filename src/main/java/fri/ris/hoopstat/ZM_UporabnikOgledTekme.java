@@ -8,14 +8,23 @@ package fri.ris.hoopstat;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Toggle;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 /** @pdOid c8f67d71-1876-4dbe-a074-dde33a29d912 */
 public class ZM_UporabnikOgledTekme extends Application {
@@ -39,6 +48,8 @@ public class ZM_UporabnikOgledTekme extends Application {
 
       // tukej klicemo metode iz tega classa da se izvedejo use casi
       Prikazi_seznam_tekem();
+
+      Spremljaj_v_zivo(stage);
 
       // listener za izbrano tekmo
       k_OgledTekme.izbranaTekmaGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
@@ -102,7 +113,6 @@ public class ZM_UporabnikOgledTekme extends Application {
    public Tekma Izberi_tekmo(Tekma t) {
       k_OgledTekme.izbrana_tekma = t;
       Prikazi_tekmo(t);
-      // TODO: implement
       return null;
    }
    
@@ -118,11 +128,50 @@ public class ZM_UporabnikOgledTekme extends Application {
    }
    
    /** @pdOid ed2b8031-1e4a-4638-bed5-6f2c70512694 */
-   public Tekma Spremljaj_v_zivo() {
-      // TODO: implement
+   public Tekma Spremljaj_v_zivo(Window window) {
+      Popup popup = new Popup();
+      Label label = new Label();
+
+      label.setStyle("-fx-background-color: #FFFFFF; -fx-padding: 10px;");
+      label.setMinWidth(100);
+      label.setMinHeight(50);
+
+      popup.getContent().add(label);
+
+      EventHandler<ActionEvent> spremljaj = actionEvent -> {
+         if (popup.isShowing()) {
+            // ugasni popup
+            k_OgledTekme.spremljaj.setText("Spremljaj v živo");
+            popup.hide();
+            return;
+         }
+
+         // prižgi popup
+         popup.show(window);
+         k_OgledTekme.spremljaj.setText("Prenehaj spremljati v živo");
+
+         if (k_OgledTekme.izbrana_tekma.koncana) {
+            label.setText("Tekma se je že končala");
+            return;
+         }
+
+         // če tekma še ni končana, začni osveževati podatke
+         // v primeru podatkovne baze/api-ja bi klicali in osveževali podatke z metodo osvezevanje()
+         label.setText(k_OgledTekme.izbrana_tekma.domaca_ekipa.ime + ": " + k_OgledTekme.izbrana_tekma.tocke_domaca + "\n" +
+                 k_OgledTekme.izbrana_tekma.gostujoca_ekipa.ime + ": " + k_OgledTekme.izbrana_tekma.tocke_gostujoca);
+      };
+      k_OgledTekme.spremljaj.setOnAction(spremljaj);
       return null;
    }
-   
+
+   private void osvezevanje(Label label) {
+      try {
+         Thread.sleep(1000);
+         // osveži podatke
+         osvezevanje(label);
+      } catch (InterruptedException e) { e.printStackTrace(); }
+   }
+
    /** @pdOid d1f72966-2323-4d9b-82e3-892dceb1845e */
    public Igralec Prikazi_igralce(Tekma t) {
       k_OgledTekme.izbira_igralca.getItems().clear();
