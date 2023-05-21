@@ -66,26 +66,37 @@
                   <VBox spacing="10.0">
                      <children>
                         <Label text="Ekipi:" />
-                        <Label fx:id="ekipa_home" text="&lt;ekipa 1&gt;">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="ekipa_away" text="&lt;ekipa 2&gt;">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                        </Label>
-                        <Separator />
-                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <HBox spacing="15.0">
                            <children>
-                              <Label text="Rezultat:" />
+                              <HBox>
+                                 <children>
+                                    <Label fx:id="ekipa_home" text="&lt;ekipa 1&gt;">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text=":" />
+                                 </children>
+                              </HBox>
                               <Label fx:id="rezultat_home" text="120">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <Label text=":" />
+                           </children>
+                        </HBox>
+                        <HBox spacing="15.0">
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Label fx:id="ekipa_away" text="&lt;ekipa 2&gt;">
+                                       <font>
+                                          <Font name="System Bold" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text=":" />
+                                 </children>
+                              </HBox>
                               <Label fx:id="rezultat_away" text="120">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
@@ -107,7 +118,7 @@
             </ScrollPane>
             <ScrollPane>
                <content>
-                  <VBox spacing="10.0">
+                  <VBox fx:id="prikazan_igralec" spacing="10.0">
                      <children>
                         <Label fx:id="igralec" text="&lt;Ime igralca&gt;">
                            <font>

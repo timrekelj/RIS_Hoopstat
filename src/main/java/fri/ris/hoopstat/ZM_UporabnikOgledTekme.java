@@ -40,6 +40,7 @@ public class ZM_UporabnikOgledTekme extends Application {
       // tukej klicemo metode iz tega classa da se izvedejo use casi
       Prikazi_seznam_tekem();
 
+      // listener za izbrano tekmo
       k_OgledTekme.izbranaTekmaGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
          public void changed(ObservableValue<? extends Toggle> ov,
                              Toggle old_toggle, Toggle new_toggle) {
@@ -77,14 +78,6 @@ public class ZM_UporabnikOgledTekme extends Application {
                return;
             }
          }
-
-         k_OgledTekme.igralec.setText("<Ime igralca>");
-         k_OgledTekme.tocke.setText("null");
-         k_OgledTekme.asistence.setText("null");
-         k_OgledTekme.skoki.setText("null");
-         k_OgledTekme.bloki.setText("null");
-         k_OgledTekme.ukradene.setText("null");
-         k_OgledTekme.izgubljene.setText("null");
       });
    }
 
@@ -120,6 +113,7 @@ public class ZM_UporabnikOgledTekme extends Application {
       k_OgledTekme.rezultat_home.setText(Integer.toString(t.tocke_domaca));
       k_OgledTekme.rezultat_away.setText(Integer.toString(t.tocke_gostujoca));
       Prikazi_igralce(t);
+      Prikazi_podatke_o_igralcu(null);
       return null;
    }
    
@@ -131,18 +125,18 @@ public class ZM_UporabnikOgledTekme extends Application {
    
    /** @pdOid d1f72966-2323-4d9b-82e3-892dceb1845e */
    public Igralec Prikazi_igralce(Tekma t) {
-      String[] igralci = new String[10];
-      List<Igralec> igralciTekme = t.vrni_seznam_igralcev();
-      for (int i = 0; i < igralciTekme.size(); i++) {
-         igralci[i] = igralciTekme.get(i).ime + " " + igralciTekme.get(i).priimek;
-      }
       k_OgledTekme.izbira_igralca.getItems().clear();
-      k_OgledTekme.izbira_igralca.getItems().addAll(igralci);
+      k_OgledTekme.izbira_igralca.getItems().addAll(k_OgledTekme.Vrni_igralce_na_tekmi());
       return null;
    }
    
    /** @pdOid 76337fbf-644e-443c-b143-1842d9b38ccc */
    public Igralec Prikazi_podatke_o_igralcu(igralec_tekma igralec_tekma) {
+      if (igralec_tekma == null) {
+         k_OgledTekme.prikazan_igralec.visibleProperty().setValue(false);
+         return null;
+      }
+      k_OgledTekme.prikazan_igralec.visibleProperty().setValue(true);
       k_OgledTekme.igralec.setText(igralec_tekma.igralec.ime + " " + igralec_tekma.igralec.priimek);
       k_OgledTekme.tocke.setText(Integer.toString(igralec_tekma.tocke));
       k_OgledTekme.asistence.setText(Integer.toString(igralec_tekma.asistence));

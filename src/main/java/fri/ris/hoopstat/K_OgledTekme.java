@@ -10,6 +10,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.time.Instant;
@@ -41,6 +42,7 @@ public class K_OgledTekme implements Initializable {
    public static List<Tekma> tekme;
    public Tekma izbrana_tekma;
    public Igralec izbrani_igralec;
+   public VBox prikazan_igralec;
 
    @Override
    public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -72,7 +74,7 @@ public class K_OgledTekme implements Initializable {
       Ekipa heat = new Ekipa("Heat", igralci_heat);
       Ekipa olimpija = new Ekipa("Olimpija", igralci_olimpija);
 
-      tekme.add(new Tekma(lakers, heat, Date.from(Instant.now()), 99, 91));
+      tekme.add(new Tekma(lakers, heat, Date.from(Instant.now()), 91, 99));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(0), tekme.get(0), 25, 8, 6, 1, 1, 4));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(1), tekme.get(0), 30, 3, 12, 3, 0, 0));
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(2), tekme.get(0), 14, 12, 3, 0, 1, 3));
@@ -86,7 +88,7 @@ public class K_OgledTekme implements Initializable {
       tekme.get(0).igralec_tekma.add(new igralec_tekma(igralci_heat.get(4), tekme.get(0), 12, 4, 9, 2, 0, 1));
 
 
-      tekme.add(new Tekma(lakers, olimpija, Date.from(Instant.parse("2023-04-04T20:30:00Z")), 112, 123));
+      tekme.add(new Tekma(lakers, olimpija, Date.from(Instant.parse("2023-04-04T20:30:00Z")), 123, 112));
       tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(0), tekme.get(1), 15, 10, 9, 0, 2, 6));
       tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(1), tekme.get(1), 30, 5, 17, 5, 0, 1));
       tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_lakers.get(2), tekme.get(1), 24, 9, 1, 0, 4, 2));
@@ -100,7 +102,7 @@ public class K_OgledTekme implements Initializable {
       tekme.get(1).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(4), tekme.get(1), 13, 1, 2, 2, 0, 1));
 
 
-      tekme.add(new Tekma(olimpija, heat, Date.from(Instant.parse("2023-03-05T22:00:00Z")), 96, 95));
+      tekme.add(new Tekma(olimpija, heat, Date.from(Instant.parse("2023-03-05T22:00:00Z")), 95, 96));
       tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(0), tekme.get(2), 29, 11, 3, 0, 2, 4));
       tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(1), tekme.get(2), 26, 5, 9, 3, 0, 1));
       tekme.get(2).igralec_tekma.add(new igralec_tekma(igralci_olimpija.get(2), tekme.get(2), 13, 2, 1, 0, 0, 2));
@@ -126,9 +128,13 @@ public class K_OgledTekme implements Initializable {
    }
    
    /** @pdOid 2f6cada9-38cc-4d05-b792-19c90fba14ba */
-   public Igralec Vrni_igralce_na_tekmi() {
-      // TODO: implement
-      return null;
+   public String[] Vrni_igralce_na_tekmi() {
+      String[] igralci = new String[10];
+      List<Igralec> igralciTekme = izbrana_tekma.vrni_seznam_igralcev();
+      for (int i = 0; i < igralciTekme.size(); i++) {
+         igralci[i] = igralciTekme.get(i).ime + " " + igralciTekme.get(i).priimek;
+      }
+      return igralci;
    }
    
    /** @pdOid ad4a78cc-459c-4c19-b14a-a4fc898fcd72 */
